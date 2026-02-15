@@ -187,6 +187,65 @@
   transform: scale(1.15);
 }
 
+.lb-dots{
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.lb-dots .lb-dot{
+  width:9px; height:9px;
+  border-radius:999px;
+  background: rgba(255,255,255,.28);
+  border: 1px solid rgba(255,255,255,.14);
+  cursor:pointer;
+}
+.lb-dots .lb-dot.active{
+  background: linear-gradient(90deg, var(--acc1), var(--acc2), var(--acc3));
+  box-shadow: 0 0 14px rgba(34,211,238,.35);
+  transform: scale(1.15);
+}
+
+.proj-slider-wrap{ position: relative; }
+
+.proj-dots{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+.proj-dots .dot{
+  width:9px; height:9px;
+  border-radius:999px;
+  background: rgba(255,255,255,.28);
+  border: 1px solid rgba(255,255,255,.14);
+  cursor:pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.proj-dots .dot.active{
+  background: linear-gradient(90deg, var(--acc1), var(--acc2), var(--acc3));
+  box-shadow: 0 0 14px rgba(34,211,238,.35);
+  transform: scale(1.15);
+}
 
   </style>
 </head>
@@ -200,7 +259,7 @@
   <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
 
   <img id="lbImg" class="lb-img" alt="Preview" />
-
+  <div id="lbDots" class="lb-dots"></div>
   <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
   </div>
 
@@ -277,7 +336,7 @@
             I build <span class="grad-text">practical projects</span> that solve real problems.
           </h1>
 
-          <p class="mt-4 text-white/70 leading-relaxed max-w-xl">
+          <p class="mt-4 text-white/70 leading-relaxed max-w-xl text-justify">
             Hi! I’m <b class="text-white/90">Sachin Kumar</b>.
             I work on Android development and web projects.
             My major project is <b class="text-white/90">Smart Skill Exchange & Local Service Platform</b>.
@@ -329,7 +388,7 @@
 
               <div class="mt-5 glass rounded-2xl p-4">
                 <p class="text-sm font-semibold">Quick Intro</p>
-                <p class="text-sm text-white/70 mt-2 leading-relaxed">
+                <p class="text-sm text-white/70 mt-2 leading-relaxed text-justify">
                   A Computer Science and Engineering diploma student
                   with strong fundamentals in computer skills and problem-solving.
                   Seeking opportunities to learn,contribute, and grow in the IT industry. 
@@ -368,7 +427,7 @@
         <div class="flex items-start justify-between flex-wrap gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">About Me</h2>
-            <p class="text-white/70 mt-2 max-w-3xl leading-relaxed">
+            <p class="text-white/70 mt-2 max-w-3xl leading-relaxed text-justify">
               I’m a Diploma CSE student. Currently an active member of the Training & Placement Cell,
 contributing to campus initiatives and bridging communication
 between students and recruiters. I enjoy building Android apps and web systems.
@@ -376,6 +435,12 @@ between students and recruiters. I enjoy building Android apps and web systems.
             </p>
           </div>
           <div class="flex gap-2">
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
+            <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
             <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
             <span class="px-3 py-2 rounded-xl glass text-sm text-white/80"></span>
           </div>
@@ -444,8 +509,6 @@ between students and recruiters. I enjoy building Android apps and web systems.
               <span class="px-3 py-2 rounded-xl glass text-sm hover:bg-white/10 transition">MS Word</span>
               <span class="px-3 py-2 rounded-xl glass text-sm hover:bg-white/10 transition">VS Code</span>
               <span class="px-3 py-2 rounded-xl glass text-sm hover:bg-white/10 transition">MySQL</span>
-              <span class="px-3 py-2 rounded-xl glass text-sm hover:bg-white/10 transition">DBMS</span>
-              
             </div>
 
             <div class="mt-5 glass rounded-2xl p-4">
@@ -483,6 +546,8 @@ between students and recruiters. I enjoy building Android apps and web systems.
                 supports multiple difficulty modes, instant scoring, voice-based 
                 feedback for answers, and a leaderboard system to compare and track user performance.
               </p>
+                 <br>
+              <span class="px-3 py-2 rounded-xl glass text-sm text-white/80">Projects Images</span>
              <div class="proj-slider-wrap">
                <div
                  class="mt-4 proj-slider flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none
@@ -547,6 +612,8 @@ between students and recruiters. I enjoy building Android apps and web systems.
             <p class="text-sm text-white/70 mt-2 leading-relaxed text-justify">
               Connects users with local providers based on skills. Users create profiles, list skills or services, and search for nearby providers. Includes chat, ratings, and a simple UI for easy navigation.
             </p>
+            <br>
+             <span class="px-3 py-2 rounded-xl glass text-sm text-white/80">Projects Images</span>
 
             <div class="proj-slider-wrap">
              <div class="mt-4 proj-slider flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none
@@ -587,6 +654,8 @@ between students and recruiters. I enjoy building Android apps and web systems.
             <p class="text-sm text-white/70 mt-2 leading-relaxed text-justify">
               Example: Student Management / Inventory / Attendance system (edit as per your project).
             </p>
+            <br>
+             <span class="px-3 py-2 rounded-xl glass text-sm text-white/80">Projects Images</span>
 
             <div class="proj-slider-wrap">
               <div class="mt-4 proj-slider flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none
@@ -658,27 +727,37 @@ between students and recruiters. I enjoy building Android apps and web systems.
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="mx-auto max-w-6xl px-4 mt-16">
-      <div class="reveal">
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Gallery</h2>
-        <p class="text-white/70 mt-2">Add your photos or project screenshots (click to zoom).</p>
+     <!-- GALLERY -->
+<section id="gallery" class="mx-auto max-w-6xl px-4 mt-16">
+  <div class="reveal">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Gallery</h2>
+    <p class="text-white/70 mt-2">Add your photos or project screenshots (click to zoom).</p>
 
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
-          <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-36 w-full"
-               src="assets/gallery-1.jpg" data-full="assets/gallery-1.jpg" alt="Gallery 1">
-          <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-36 w-full"
-               src="assets/gallery-2.jpg" data-full="assets/gallery-2.jpg" alt="Gallery 2">
-          <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-36 w-full"
-               src="assets/gallery-3.jpg" data-full="assets/gallery-3.jpg" alt="Gallery 3">
-          <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-36 w-full"
-               src="assets/gallery-4.jpg" data-full="assets/gallery-4.jpg" alt="Gallery 4">
-        </div>
+    <div class="mt-6 proj-slider-wrap">
+      <div class="proj-slider flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none
+                  [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing">
 
-        <p class="text-xs text-white/55 mt-3">
-        </p>
+        <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-44
+                    w-full min-w-[88%] sm:min-w-[70%] snap-center"
+             src="assets/gallery-1.jpg" data-full="assets/gallery-1.jpg" alt="Gallery 1">
+
+        <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-44
+                    w-full min-w-[88%] sm:min-w-[70%] snap-center"
+             src="assets/gallery-2.jpg" data-full="assets/gallery-2.jpg" alt="Gallery 2">
+
+        <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-44
+                    w-full min-w-[88%] sm:min-w-[70%] snap-center"
+             src="assets/gallery-3.jpg" data-full="assets/gallery-3.jpg" alt="Gallery 3">
+
+        <img class="galleryItem cursor-pointer rounded-2xl border border-white/10 object-cover h-44
+                    w-full min-w-[88%] sm:min-w-[70%] snap-center"
+             src="assets/gallery-4.jpg" data-full="assets/gallery-4.jpg" alt="Gallery 4">
       </div>
-    </section>
+    </div>
+
+    <p class="text-xs text-white/55 mt-3">Swipe / Scroll to view more →</p>
+  </div>
+</section>
 
     <!-- CONTACT -->
     <section id="contact" class="mx-auto max-w-6xl px-4 mt-16 mb-16">
@@ -780,6 +859,7 @@ between students and recruiters. I enjoy building Android apps and web systems.
 // Lightbox: open only images from the same project card (or same gallery section)
 // Lightbox: open only images from the same project card (or same gallery section)
 (function () {
+  const lbDots = document.getElementById("lbDots");
   const lightbox = document.getElementById("lightbox");
   const lbImg = document.getElementById("lbImg");
   const lbPrev = document.getElementById("lbPrev");
@@ -801,6 +881,24 @@ between students and recruiters. I enjoy building Android apps and web systems.
     const showNav = items.length > 1;
     lbPrev.style.display = showNav ? "" : "none";
     lbNext.style.display = showNav ? "" : "none";
+    if (lbDots) lbDots.style.display = showNav ? "" : "none";
+
+// dots render
+if (lbDots) {
+  lbDots.innerHTML = "";
+  if (showNav) {
+    items.forEach((_, di) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "lb-dot" + (di === index ? " active" : "");
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openAt(di);
+      });
+      lbDots.appendChild(b);
+    });
+  }
+}
     lightbox.classList.add("show");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -811,6 +909,7 @@ between students and recruiters. I enjoy building Android apps and web systems.
     lightbox.setAttribute("aria-hidden", "true");
     lbImg.src = "";
     document.body.style.overflow = "";
+    if (lbDots) lbDots.innerHTML = "";
   }
 
   function next() { openAt(index + 1); }
@@ -916,7 +1015,7 @@ between students and recruiters. I enjoy building Android apps and web systems.
       dragged = false;
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
-    });
+    })
 
     slider.addEventListener("mouseleave", () => (isDown = false));
     slider.addEventListener("mouseup", () => (isDown = false));
@@ -949,117 +1048,87 @@ between students and recruiters. I enjoy building Android apps and web systems.
   });
 })();
 
-// Auto-play sliders (manual scroll allowed) + pause when lightbox is open
+// Autoplay (works for ALL sliders) + Pause on hover + Pause on user + Pause on zoom
 (function () {
-  const sliders = Array.from(document.querySelectorAll(".proj-slider"));
-  if (!sliders.length) return;
-
+  const sliders = document.querySelectorAll(".proj-slider");
   const lightbox = document.getElementById("lightbox");
-  const intervalMs = 2600;      // auto speed
-  const resumeDelay = 1400;     // user chhode to itni der baad auto resume
 
-  const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-  if (prefersReduced) return; // accessibility
+  const intervalMs = 2500;
+  const resumeDelay = 1400;
+  const stepRatio = 0.85;
 
-  const isZoomOpen = () => !!(lightbox && lightbox.classList.contains("show"));
-
-  function getSlides(slider) {
-    return Array.from(slider.querySelectorAll(".galleryItem"));
-  }
-
-  function nearestIndex(slider) {
-    const slides = getSlides(slider);
-    if (!slides.length) return 0;
-
-    const center = slider.scrollLeft + slider.clientWidth / 2;
-    let best = 0;
-    let bestDist = Infinity;
-
-    slides.forEach((s, i) => {
-      const mid = s.offsetLeft + s.clientWidth / 2;
-      const d = Math.abs(mid - center);
-      if (d < bestDist) {
-        bestDist = d;
-        best = i;
-      }
-    });
-    return best;
-  }
-
-  function scrollToIndex(slider, i) {
-    const slides = getSlides(slider);
-    if (!slides.length) return;
-
-    const idx = (i + slides.length) % slides.length;
-    const target = slides[idx];
-
-    // center-ish scroll
-    const left = target.offsetLeft - (slider.clientWidth - target.clientWidth) / 2;
-    slider.scrollTo({ left, behavior: "smooth" });
-    slider.dataset.idx = String(idx);
-  }
+  const isZoomOpen = () => lightbox && lightbox.classList.contains("show");
 
   sliders.forEach((slider) => {
-    slider.dataset.idx = String(nearestIndex(slider));
+    // wrapper exists -> hover works on images + dots both
+    const wrap =
+      slider.closest(".proj-slider-wrap") || slider.parentElement || slider;
 
-    let paused = false;
+    const isScrollable = () => slider.scrollWidth > slider.clientWidth + 5;
+
+    let hoverPaused = false; // cursor on slider/card
+    let tempPaused = false;  // user interaction pause
     let resumeT = null;
-    let settleT = null;
 
     const pauseTemp = () => {
-      paused = true;
+      tempPaused = true;
       clearTimeout(resumeT);
       resumeT = setTimeout(() => {
-        paused = false;
+        tempPaused = false;
       }, resumeDelay);
     };
 
-    // Auto timer
-    const timer = setInterval(() => {
-      if (document.hidden) return;
-      if (paused) return;
-      if (isZoomOpen()) return;
+    // ✅ Hover pause (PC): works even when cursor is on dots/images
+    wrap.addEventListener("pointerenter", () => {
+      hoverPaused = true;
+    });
+    wrap.addEventListener("pointerleave", () => {
+      hoverPaused = false;
+    });
 
-      const current = Number(slider.dataset.idx || nearestIndex(slider));
-      scrollToIndex(slider, current + 1);
-    }, intervalMs);
-
-    // Manual interactions (PC + Mobile)
-    slider.addEventListener("mouseenter", () => { paused = true; });
-    slider.addEventListener("mouseleave", () => { paused = false; });
-
-    slider.addEventListener("mousedown", () => { paused = true; });
-    slider.addEventListener("mouseup", () => pauseTemp());
-
-    slider.addEventListener("touchstart", () => { paused = true; }, { passive: true });
-    slider.addEventListener("touchend", () => pauseTemp(), { passive: true });
-
-    // When user scrolls manually: pause, update index to current slide, then resume
-    slider.addEventListener("scroll", () => {
+    // ✅ Manual interactions (PC + Mobile)
+    slider.addEventListener("pointerdown", () => {
+      tempPaused = true;
+    });
+    slider.addEventListener("pointerup", () => {
       pauseTemp();
+    });
 
-      clearTimeout(settleT);
-      settleT = setTimeout(() => {
-        slider.dataset.idx = String(nearestIndex(slider));
-      }, 180);
+    slider.addEventListener("touchstart", () => {
+      tempPaused = true;
     }, { passive: true });
 
-    // Optional: wheel -> horizontal on PC mouse
-    slider.addEventListener("wheel", (e) => {
-      if (isZoomOpen()) return;
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        slider.scrollLeft += e.deltaY;
-      }
-    }, { passive: false });
+    slider.addEventListener("touchend", () => {
+      pauseTemp();
+    }, { passive: true });
 
-    // Cleanup on page unload (optional)
-    window.addEventListener("beforeunload", () => clearInterval(timer));
+    slider.addEventListener("scroll", () => {
+      pauseTemp();
+    }, { passive: true });
+
+    // ✅ Autoplay
+    setInterval(() => {
+      if (document.hidden) return;
+      if (isZoomOpen()) return;
+      if (hoverPaused || tempPaused) return;
+      if (!isScrollable()) return;
+
+      const max = slider.scrollWidth - slider.clientWidth;
+
+      if (slider.scrollLeft >= max - 5) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        slider.scrollBy({
+          left: slider.clientWidth * stepRatio,
+          behavior: "smooth",
+        });
+      }
+    }, intervalMs);
   });
 })();
 
-// Dots indicator for each project slider
-// Overlay dots for each project slider
+
+// Dots overlay for ALL sliders (projects + gallery) - stable & synced
 (function () {
   const sliders = document.querySelectorAll(".proj-slider");
 
@@ -1073,24 +1142,33 @@ between students and recruiters. I enjoy building Android apps and web systems.
     const slides = Array.from(slider.querySelectorAll(".galleryItem"));
     if (slides.length <= 1) return;
 
+    // create dots
     const dotsWrap = document.createElement("div");
     dotsWrap.className = "proj-dots";
-    dotsWrap.innerHTML = slides
-      .map((_, i) => `<button type="button" class="dot" aria-label="Slide ${i + 1}"></button>`)
-      .join("");
-
+    slides.forEach((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "dot";
+      b.setAttribute("aria-label", `Slide ${i + 1}`);
+      dotsWrap.appendChild(b);
+    });
     wrap.appendChild(dotsWrap);
 
     const dots = Array.from(dotsWrap.querySelectorAll(".dot"));
 
+    // helper: find current slide (by center position)
     function nearestIndex() {
       const center = slider.scrollLeft + slider.clientWidth / 2;
-      let best = 0, bestDist = Infinity;
+      let best = 0;
+      let bestDist = Infinity;
 
       slides.forEach((s, i) => {
         const mid = s.offsetLeft + s.clientWidth / 2;
         const d = Math.abs(mid - center);
-        if (d < bestDist) { bestDist = d; best = i; }
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
       });
       return best;
     }
@@ -1099,24 +1177,35 @@ between students and recruiters. I enjoy building Android apps and web systems.
       dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
     }
 
+    // click dot -> go to slide (and stop affecting slider click)
     dots.forEach((btn, i) => {
+      btn.addEventListener("pointerdown", (e) => e.stopPropagation());
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
+
         const target = slides[i];
         const left = target.offsetLeft - (slider.clientWidth - target.clientWidth) / 2;
         slider.scrollTo({ left, behavior: "smooth" });
+
         setActive(i);
       });
     });
 
+    // keep dots synced while slider moves (auto or manual)
     let raf = 0;
-    const update = () => setActive(nearestIndex());
+    const sync = () => setActive(nearestIndex());
 
-    update();
+    sync();
     slider.addEventListener("scroll", () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
+      raf = requestAnimationFrame(sync);
     }, { passive: true });
+
+    // also resync on resize (responsive widths change)
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(sync);
+    });
   });
 })();
 
